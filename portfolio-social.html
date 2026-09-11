@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('ame_portfolio_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      const savedLang = localStorage.getItem('ame_portfolio_lang') || 'ar';
+      document.documentElement.setAttribute('lang', savedLang);
+      document.documentElement.setAttribute('dir', savedLang === 'ar' ? 'rtl' : 'ltr');
+    })();
+  </script>
+  <title>أعمال إدارة السوشيال ميديا | Ahmed Mohamed (AME)</title>
+  <meta name="description" content="مشاهدة أعمال إدارة صفحات السوشيال ميديا لـ أحمد محمد (AME) - إدارة الصفحات، صناعة المحتوى، النشر">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%23131720'/><text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='42' fill='%2300f59b'>AME</text></svg>">
+  <link rel="stylesheet" href="css/portfolio-shared.css">
+</head>
+<body>
+  <div class="bg-ambient-glow glow-top-left" aria-hidden="true"></div>
+  <div class="bg-ambient-glow glow-bottom-right" aria-hidden="true"></div>
+
+  <header class="portfolio-header">
+    <div class="portfolio-header-inner">
+      <div class="portfolio-header-nav">
+        <a href="index.html#services" class="back-btn back-btn-services" title="الرجوع إلى قسم الخدمات والأعمال" onclick="if(window.history.length > 1 && document.referrer && document.referrer.indexOf(window.location.host) !== -1){window.history.back(); return false;} else {window.location.href='index.html#services'; return false;}">
+          <svg class="back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span data-i18n="nav_back">رجوع</span>
+        </a>
+        <a href="index.html" class="back-btn back-btn-home" title="الذهاب للصفحة الرئيسية">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span data-i18n="back_home">الرئيسية</span>
+        </a>
+        <a href="index.html" class="portfolio-brand" aria-label="AME Home">
+          <img src="assets/images/ame-logo.png" alt="AME Logo" class="brand-logo-img-sm">
+        </a>
+      </div>
+
+      <!-- Action Controls (Dual Language Switcher & Theme Toggle) -->
+      <div class="nav-actions">
+        <!-- Bilingual Segmented Language Switcher -->
+        <div class="lang-switch-group" role="group" aria-label="Language Selector">
+          <button id="lang-btn-ar" class="lang-pill-btn active" data-lang="ar" aria-label="النسخة العربية" title="تفعيل النسخة العربية">
+            <span class="lang-flag">🇸🇦</span>
+            <span class="lang-text">العربية</span>
+          </button>
+          <button id="lang-btn-en" class="lang-pill-btn" data-lang="en" aria-label="English Version" title="Switch to English">
+            <span class="lang-flag">🇬🇧</span>
+            <span class="lang-text">English</span>
+          </button>
+        </div>
+
+        <!-- Dark / Light Theme Switcher -->
+        <button id="theme-toggle" class="control-btn" aria-label="Toggle Theme" title="تبديل المظهر">
+          <span class="theme-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </span>
+          <span class="theme-label">فاتح</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="portfolio-main">
+    <section class="portfolio-hero">
+      <div class="portfolio-hero-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+      </div>
+      <div class="portfolio-service-tag" data-i18n="social_tag">أعمالي في</div>
+      <h1 class="portfolio-hero-title" data-i18n="social_title">إدارة السوشيال ميديا</h1>
+      <p class="portfolio-hero-subtitle" data-i18n="social_subtitle">Social Media Management</p>
+      <p class="portfolio-hero-desc" data-i18n="social_desc">إدارة الصفحات · صناعة المحتوى · النشر · المتابعة</p>
+    </section>
+
+    <section class="portfolio-grid-section">
+      <div class="portfolio-container">
+        <div class="coming-soon-block">
+          <div class="cs-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <h2 class="cs-title" data-i18n="social_cs_title">قريباً</h2>
+          <p class="cs-desc" data-i18n="social_cs_desc">يتم الآن تجهيز الأعمال وإضافتها. سيتم عرض أعمال إدارة صفحات السوشيال ميديا هنا قريباً.</p>
+          <a href="index.html#contact" class="cs-cta-btn">
+            <span data-i18n="social_cs_cta">تواصل معي الآن</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="portfolio-footer">
+    <p>© 2025 <span class="footer-name">Ahmed Mohamed (AME)</span> · <span data-i18n="footer_rights">جميع الحقوق محفوظة</span></p>
+  </footer>
+
+  <!-- Shared Controller Script -->
+  <script src="js/portfolio-shared.js"></script>
+</body>
+</html>

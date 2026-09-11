@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('ame_portfolio_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      const savedLang = localStorage.getItem('ame_portfolio_lang') || 'ar';
+      document.documentElement.setAttribute('lang', savedLang);
+      document.documentElement.setAttribute('dir', savedLang === 'ar' ? 'rtl' : 'ltr');
+    })();
+  </script>
+  <title>أعمال مونتاج الفيديو | Ahmed Mohamed (AME)</title>
+  <meta name="description" content="مشاهدة أعمال مونتاج الفيديو لـ أحمد محمد (AME) - فلوجات، ريلز، إعلانات، حفلات فرقة بصمة، أفراح، ومقدمات بودكاست">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%23131720'/><text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='42' fill='%2300f59b'>AME</text></svg>">
+  <link rel="stylesheet" href="css/portfolio-shared.css">
+  <style>
+    .tag-vlogger { background: rgba(56, 189, 248, 0.14); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .tag-music { background: rgba(168, 85, 247, 0.14); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .tag-ads { background: rgba(245, 158, 11, 0.14); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .tag-wedding { background: rgba(236, 72, 153, 0.14); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); }
+    .tag-intro { background: rgba(0, 245, 155, 0.14); color: #00f59b; border: 1px solid rgba(0, 245, 155, 0.3); }
+    .tag-info { background: rgba(14, 165, 233, 0.14); color: #38bdf8; border: 1px solid rgba(14, 165, 233, 0.3); }
+    .tag-sports { background: rgba(16, 185, 129, 0.14); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+    .video-quality-chip {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(8, 10, 15, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-family: var(--font-en);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      z-index: 2;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .video-quality-chip svg { width: 12px; height: 12px; color: var(--accent-primary); }
+    .video-tag-inline { font-size: 0.8rem; font-family: var(--font-en); font-weight: 700; color: var(--text-muted); }
+    .video-card-banner { height: 195px; cursor: pointer; }
+
+    .video-play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(12, 14, 20, 0.82);
+      border: 2px solid rgba(0, 245, 155, 0.5);
+      color: var(--accent-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 3;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 245, 155, 0.2);
+    }
+
+    .video-play-btn::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 245, 155, 0.35);
+      animation: pulseRipple 2.2s ease-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes pulseRipple {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+
+    .video-card:hover .video-play-btn {
+      transform: translate(-50%, -50%) scale(1.15);
+      background: var(--accent-primary);
+      color: #07080a;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 35px rgba(0, 245, 155, 0.6);
+    }
+
+    .video-action-play {
+      background: linear-gradient(135deg, rgba(0, 245, 155, 0.15) 0%, rgba(56, 189, 248, 0.15) 100%);
+      border-color: rgba(0, 245, 155, 0.35);
+    }
+    .video-action-play:hover {
+      background: linear-gradient(135deg, #00f59b 0%, #38bdf8 100%);
+      color: #07080a;
+      border-color: #00f59b;
+      box-shadow: 0 6px 25px rgba(0, 245, 155, 0.4);
+    }
+
+    .cinematic-banner-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(0, 245, 155, 0.08);
+      border: 1px solid rgba(0, 245, 155, 0.2);
+      border-radius: 999px;
+      font-size: 0.84rem;
+      color: var(--accent-primary);
+      margin-top: 14px;
+    }
+    .cinematic-banner-note svg { width: 15px; height: 15px; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient-glow glow-top-left" aria-hidden="true"></div>
+  <div class="bg-ambient-glow glow-bottom-right" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="portfolio-header">
+    <div class="portfolio-header-inner">
+      <div class="portfolio-header-nav">
+        <a href="index.html#services" class="back-btn back-btn-services" title="الرجوع إلى قسم الخدمات والأعمال" onclick="if(window.history.length > 1 && document.referrer && document.referrer.indexOf(window.location.host) !== -1){window.history.back(); return false;} else {window.location.href='index.html#services'; return false;}">
+          <svg class="back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span data-i18n="nav_back">رجوع</span>
+        </a>
+        <a href="index.html" class="back-btn back-btn-home" title="الذهاب للصفحة الرئيسية">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span data-i18n="back_home">الرئيسية</span>
+        </a>
+        <a href="index.html" class="portfolio-brand" aria-label="AME Home">
+          <img src="assets/images/ame-logo.png" alt="AME Logo" class="brand-logo-img-sm">
+        </a>
+      </div>
+
+      <!-- Action Controls (Dual Language Switcher & Theme Toggle) -->
+      <div class="nav-actions">
+        <!-- Bilingual Segmented Language Switcher -->
+        <div class="lang-switch-group" role="group" aria-label="Language Selector">
+          <button id="lang-btn-ar" class="lang-pill-btn active" data-lang="ar" aria-label="النسخة العربية" title="تفعيل النسخة العربية">
+            <span class="lang-flag">🇸🇦</span>
+            <span class="lang-text">العربية</span>
+          </button>
+          <button id="lang-btn-en" class="lang-pill-btn" data-lang="en" aria-label="English Version" title="Switch to English">
+            <span class="lang-flag">🇬🇧</span>
+            <span class="lang-text">English</span>
+          </button>
+        </div>
+
+        <!-- Dark / Light Theme Switcher -->
+        <button id="theme-toggle" class="control-btn" aria-label="Toggle Theme" title="تبديل المظهر">
+          <span class="theme-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </span>
+          <span class="theme-label">فاتح</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="portfolio-main">
+    <section class="portfolio-hero">
+      <div class="portfolio-hero-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+      </div>
+      <div class="portfolio-service-tag" data-i18n="video_tag">أعمالي في</div>
+      <h1 class="portfolio-hero-title" data-i18n="video_title">مونتاج الفيديو</h1>
+      <p class="portfolio-hero-subtitle" data-i18n="video_subtitle">Video Editing & Visual Storytelling</p>
+      <p class="portfolio-hero-desc" data-i18n="video_desc">أعمال مونتاج احترافية تشمل فلوجات صناع المحتوى، إعلانات المنتجات، تغطيات الحفلات، والمناسبات بإيقاع بصري يخطف الأنظار</p>
+    </section>
+
+    <!-- Grid Section -->
+    <section class="portfolio-grid-section">
+      <div class="portfolio-container">
+
+        <!-- Category Filters -->
+        <nav class="voice-filter-nav" aria-label="تصنيفات أعمال الفيديو">
+          <div class="voice-filter-list" role="tablist">
+            <button class="voice-filter-btn is-active" data-filter="all" role="tab" aria-selected="true" onclick="filterVideoCards('all', this)">
+              <span data-i18n="video_filter_all">الكل</span>
+              <span class="filter-badge-count">20</span>
+            </button>
+            <button class="voice-filter-btn" data-filter="vlogger" role="tab" aria-selected="false" onclick="filterVideoCards('vlogger', this)">
+              <span data-i18n="video_filter_vlogger">🎬 فلوجر وصناع محتوى</span>
+              <span class="filter-badge-count">6</span>
+            </button>
+            <button class="voice-filter-btn" data-filter="music" role="tab" aria-selected="false" onclick="filterVideoCards('music', this)">
+              <span data-i18n="video_filter_music">🎸 فرقة بصمة</span>
+              <span class="filter-badge-count">5</span>
+            </button>
+            <button class="voice-filter-btn" data-filter="ads" role="tab" aria-selected="false" onclick="filterVideoCards('ads', this)">
+              <span data-i18n="video_filter_ads">📢 إعلانات وبرومو</span>
+              <span class="filter-badge-count">3</span>
+            </button>
+            <button class="voice-filter-btn" data-filter="wedding" role="tab" aria-selected="false" onclick="filterVideoCards('wedding', this)">
+              <span data-i18n="video_filter_wedding">💍 مناسبات وأفراح</span>
+              <span class="filter-badge-count">2</span>
+            </button>
+            <button class="voice-filter-btn" data-filter="intro" role="tab" aria-selected="false" onclick="filterVideoCards('intro', this)">
+              <span data-i18n="video_filter_intro">🎙️ مقدمات وإنترو</span>
+              <span class="filter-badge-count">2</span>
+            </button>
+            <button class="voice-filter-btn" data-filter="info-sports" role="tab" aria-selected="false" onclick="filterVideoCards('info-sports', this)">
+              <span data-i18n="video_filter_info">💡 تثقيفي ورياضي</span>
+              <span class="filter-badge-count">2</span>
+            </button>
+          </div>
+        </nav>
+
+        <!-- Video Cards Grid (Exact user order 1 to 20) -->
+        <div class="voice-grid" id="video-works-grid">
+
+          <!-- Card 01 -->
+          <article class="voice-card video-card" data-category="vlogger" data-num="01" data-title="Vlogger Content" data-sub="محتوى فلوجر تفاعلي — مونتاج ديناميكي وسرد مرئي سريع" data-file-id="159w5nACjofM3u9EqtBdvnkWoF7ePPsYC" data-drive="https://drive.google.com/drive/folders/1L0gDu3oVBvFUTADv8cnlNl_cRDIx7wyg">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-01.jpg" alt="Vlogger Content #01" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#01</span>
+                <span class="voice-badge-tag tag-vlogger">🎬 فلوجر وصناع محتوى</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Vlogger Content</span><span class="video-tag-inline">#01</span></h2>
+              <p class="voice-card-title-ar">محتوى فلوجر تفاعلي — مونتاج ديناميكي وسرد مرئي سريع</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>ريلز وتيك توك</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>انتقالات بصرية سلسة</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Vlogger%20Content%20(%2301)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 02 -->
+          <article class="voice-card video-card" data-category="vlogger" data-num="02" data-title="Vlogger Content" data-sub="تجربة حية وصناعة محتوى — إيقاع جذاب وتنسيق ألوان سينمائي" data-file-id="1Cti1EeJFjR7oZLQXPS2vrcvvm3A5yL_-" data-drive="https://drive.google.com/drive/folders/1aiUTNP1zK7Nm9qDpOgiNmomJdHAtZX0s">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-02.jpg" alt="Vlogger Content #02" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#02</span>
+                <span class="voice-badge-tag tag-vlogger">🎬 فلوجر وصناع محتوى</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Vlogger Content</span><span class="video-tag-inline">#02</span></h2>
+              <p class="voice-card-title-ar">تجربة حية وصناعة محتوى — إيقاع جذاب وتنسيق ألوان سينمائي</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>فلوج وتجارب واقعية</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>ريتم مشوق وحيوي</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Vlogger%20Content%20(%2302)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 03 -->
+          <article class="voice-card video-card" data-category="vlogger" data-num="03" data-title="Vlogger Content" data-sub="مونتاج فلوج إبداعي — إبراز اللحظات المشوقة مع نصوص متحركة" data-file-id="18L9l9zVdJYeueFicY-ryVZe6dlY52guI" data-drive="https://drive.google.com/drive/folders/1T490BnP3-qqQIDBx8SWd5MoMo6MS9_42">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-03.jpg" alt="Vlogger Content #03" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#03</span>
+                <span class="voice-badge-tag tag-vlogger">🎬 فلوجر وصناع محتوى</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Vlogger Content</span><span class="video-tag-inline">#03</span></h2>
+              <p class="voice-card-title-ar">مونتاج فلوج إبداعي — إبراز اللحظات المشوقة مع نصوص متحركة</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>ستوري تيلينج مشوق</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>نصوص متحركة ومؤثرات</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Vlogger%20Content%20(%2303)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 04 -->
+          <article class="voice-card video-card" data-category="vlogger" data-num="04" data-title="Vlogger Content" data-sub="ريلز فلوجر وسوشيال ميديا — جذب المشاهد من اللحظة الأولى" data-file-id="1ApLXQU8DTZfD2ws5f6RNga17IzZUjvrD" data-drive="https://drive.google.com/drive/folders/1MrH6sdRajvk-K4plnE1UdQBHhLfJKILn">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-04.jpg" alt="Vlogger Content #04" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#04</span>
+                <span class="voice-badge-tag tag-vlogger">🎬 فلوجر وصناع محتوى</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Vlogger Content</span><span class="video-tag-inline">#04</span></h2>
+              <p class="voice-card-title-ar">ريلز فلوجر وسوشيال ميديا — جذب المشاهد من اللحظة الأولى</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>هوك بصري خاطف</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>هندسة صوتية متقنة</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Vlogger%20Content%20(%2304)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 05 -->
+          <article class="voice-card video-card" data-category="vlogger" data-num="05" data-title="Vlogger Content" data-sub="محتوى يوميات وتغطيات — قص سينمائي وتنسيق زوايا التصوير" data-file-id="1ax8B-GYxxS6hCvQOkLuDrdpcaX0Co0Oo" data-drive="https://drive.google.com/drive/folders/1Ud8pHnAfIyHDHLz0MygXNMcRSLJPRcan">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-05.jpg" alt="Vlogger Content #05" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#05</span>
+                <span class="voice-badge-tag tag-vlogger">🎬 فلوجر وصناع محتوى</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Vlogger Content</span><span class="video-tag-inline">#05</span></h2>
+              <p class="voice-card-title-ar">محتوى يوميات وتغطيات — قص سينمائي وتنسيق زوايا التصوير</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>تغطيات سريعة</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>تصحيح ألوان احترافي</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Vlogger%20Content%20(%2305)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 06 -->
+          <article class="voice-card video-card" data-category="vlogger" data-num="06" data-title="Vlogger Content" data-sub="فلوج تفاعلي مشوق — تناغم موسيقي وحركات كاميرا مميزة" data-file-id="1WKB8RLBIeiLpaa-dc4XgzR8qw9GcvT_F" data-drive="https://drive.google.com/drive/folders/1yB0K6VIzOzsS3wbpMBRDKTi0FdIywiC5">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-06.jpg" alt="Vlogger Content #06" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#06</span>
+                <span class="voice-badge-tag tag-vlogger">🎬 فلوجر وصناع محتوى</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Vlogger Content</span><span class="video-tag-inline">#06</span></h2>
+              <p class="voice-card-title-ar">فلوج تفاعلي مشوق — تناغم موسيقي وحركات كاميرا مميزة</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>تريندات سوشيال ميديا</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>مونتاج ريلز احترافي</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Vlogger%20Content%20(%2306)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 07 -->
+          <article class="voice-card video-card" data-category="info-sports" data-num="07" data-title="Informational Video" data-sub="فيديو تثقيفي ومعلوماتي — تبسيط المعلومة بعناصر بصرية مشوقة" data-file-id="1kPvaNniFLNm_IdN_iNBtyAbALEPd_Ncj" data-drive="https://drive.google.com/drive/folders/1Tni9K2ds61zC6fr-v4TpHAWwn1x-e7Js">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-07.jpg" alt="Informational Video" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#07</span>
+                <span class="voice-badge-tag tag-info">💡 فيديو تثقيفي</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Informational Video</span><span class="video-tag-inline">#07</span></h2>
+              <p class="voice-card-title-ar">فيديو تثقيفي ومعلوماتي — تبسيط المعلومة بعناصر بصرية مشوقة</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>موشن جرافيكس توضيحي</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>تبسيط وسرد معلوماتي</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Informational%20Video%20(%2307)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 08 -->
+          <article class="voice-card video-card" data-category="info-sports" data-num="08" data-title="Football Player CV" data-sub="سيرة ذاتية ومهارات لاعب كرة قدم — استعراض احترافي للأهداف واللمسات" data-file-id="1Fx-NzFRZYzuBthNhRFL4KBmTQWbIdSCC" data-drive="https://drive.google.com/drive/folders/1QwvEaA2XkvgTFUq3_iH8Clpa3TkGRgtx">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-08.jpg" alt="Football Player CV" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#08</span>
+                <span class="voice-badge-tag tag-sports">⚽ سيرة رياضية</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Football Player CV</span><span class="video-tag-inline">#08</span></h2>
+              <p class="voice-card-title-ar">سيرة ذاتية ومهارات لاعب كرة قدم — استعراض احترافي للأهداف واللمسات</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>هايلايت مهارات وأهداف</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>إيقاع حماسي سريع</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Football%20Player%20CV%20(%2308)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 09 -->
+          <article class="voice-card video-card" data-category="ads" data-num="09" data-title="Barbershop Ad" data-sub="إعلان صالون حلاقة رجالي — تصوير ومونتاج سينمائي عصري وفخم" data-file-id="1FL4waetqNgMus8Wyz0zAfAwF3Su3pmI9" data-drive="https://drive.google.com/drive/folders/1IuLlFC5GHMCvJaITp6QtClEn-H7vz4hF">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-09.jpg" alt="Barbershop Ad" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#09</span>
+                <span class="voice-badge-tag tag-ads">📢 إعلان تجاري</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Barbershop Ad</span><span class="video-tag-inline">#09</span></h2>
+              <p class="voice-card-title-ar">إعلان صالون حلاقة رجالي — تصوير ومونتاج سينمائي عصري وفخم</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>إعلانات سوشيال ميديا</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>لقطات سينمائية مقربة</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Barbershop%20Ad%20(%2309)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 10 -->
+          <article class="voice-card video-card" data-category="music" data-num="10" data-title="Basma Band" data-sub="فرقة بصمة الموسيقية — تغطية حفل غنائي حي بتناغم إيقاعي ممتع" data-file-id="1eY8FGvwD0aS6NjHQwx3IYSZKGejl_NOJ" data-drive="https://drive.google.com/drive/folders/1zDl6pDSZ6v5tjLr-eR1tSF-W0TBfMkQd">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-10.jpg" alt="Basma Band #10" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#10</span>
+                <span class="voice-badge-tag tag-music">🎸 فرقة بصمة</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Basma Band</span><span class="video-tag-inline">#10</span></h2>
+              <p class="voice-card-title-ar">فرقة بصمة الموسيقية — تغطية حفل غنائي حي بتناغم إيقاعي ممتع</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>تغطية حفلات حية</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>ميكس وتزامن إيقاعي</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Basma%20Band%20(%2310)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 11 -->
+          <article class="voice-card video-card" data-category="music" data-num="11" data-title="Basma Band" data-sub="فرقة بصمة الموسيقية — استعراض مسرحي وأداء فني حركي مشوق" data-file-id="1q_ThushHTQX76fJQnx5jbFgxC1bbYnCQ" data-drive="https://drive.google.com/drive/folders/11QVQI4XKnzXTDAo-BE2FYGKG8f5Gbyla">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-11.jpg" alt="Basma Band #11" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#11</span>
+                <span class="voice-badge-tag tag-music">🎸 فرقة بصمة</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Basma Band</span><span class="video-tag-inline">#11</span></h2>
+              <p class="voice-card-title-ar">فرقة بصمة الموسيقية — استعراض مسرحي وأداء فني حركي مشوق</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>استعراض مسرحي فني</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>ريلز غنائية عالية الجودة</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Basma%20Band%20(%2311)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 12 -->
+          <article class="voice-card video-card" data-category="music" data-num="12" data-title="Basma Band" data-sub="فرقة بصمة الموسيقية — برومو دعائي وكليبات استعراضية سريعة" data-file-id="1NV7U8yw-aByQW3cx7XmH4ld7t0gGgVZk" data-drive="https://drive.google.com/drive/folders/1JoLn0I2J2w1JtTgfoKAHhYbnB5d32Y_z">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-12.jpg" alt="Basma Band #12" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#12</span>
+                <span class="voice-badge-tag tag-music">🎸 فرقة بصمة</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Basma Band</span><span class="video-tag-inline">#12</span></h2>
+              <p class="voice-card-title-ar">فرقة بصمة الموسيقية — برومو دعائي وكليبات استعراضية سريعة</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>برومو دعائي سريع</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>طاقة حيوية وإضاءة</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Basma%20Band%20(%2312)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 13 -->
+          <article class="voice-card video-card" data-category="music" data-num="13" data-title="Basma Band" data-sub="فرقة بصمة الموسيقية — كواليس وتجهيزات العرض بطابع وثائقي مميز" data-file-id="1gVPIVI6uOGRIsQM8m7dvWllMNDGnCK9m" data-drive="https://drive.google.com/drive/folders/14AA1DUUF7niaW6edKc0JdHkimQyTBb4g">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-13.jpg" alt="Basma Band #13" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#13</span>
+                <span class="voice-badge-tag tag-music">🎸 فرقة بصمة</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Basma Band</span><span class="video-tag-inline">#13</span></h2>
+              <p class="voice-card-title-ar">فرقة بصمة الموسيقية — كواليس وتجهيزات العرض بطابع وثائقي مميز</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>كواليس ولقطات حصرية</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>مونتاج وثائقي ممتع</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Basma%20Band%20(%2313)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 14 -->
+          <article class="voice-card video-card" data-category="ads" data-num="14" data-title="Coffee Product Ad" data-sub="إعلان منتج قهوة فاخر — حركة سينمائية هادئة وإبراز تفاصيل ورائحة القهوة" data-file-id="1J4mJ6YmVNlB2lZX_YJTNCBmLHFb0UI5w" data-drive="https://drive.google.com/drive/folders/1iTR2Ltj_Qn0I1g9JMtDhRQVaAGHiMBUX">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-14.jpg" alt="Coffee Product Ad" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#14</span>
+                <span class="voice-badge-tag tag-ads">☕ إعلان منتج</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Coffee Product Ad</span><span class="video-tag-inline">#14</span></h2>
+              <p class="voice-card-title-ar">إعلان منتج قهوة فاخر — حركة سينمائية هادئة وإبراز تفاصيل ورائحة القهوة</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>إعلانات منتجات وبراندات</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>إضاءة وألوان فخمة</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Coffee%20Product%20Ad%20(%2314)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 15 -->
+          <article class="voice-card video-card" data-category="ads" data-num="15" data-title="Café Promo" data-sub="فيديو ترويجي لأجواء كافيه — استعراض المشروبات والديكور بأسلوب يجذب الزوار" data-file-id="1LuOFfRaWj7946BDGdK42k6__F4s0CvmR" data-drive="https://drive.google.com/drive/folders/1R8hKyCoKVQMPK7bU-b7igqcYZEHGf1AA">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-15.jpg" alt="Café Promo" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#15</span>
+                <span class="voice-badge-tag tag-ads">🏪 برومو كافيه</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Café Promo</span><span class="video-tag-inline">#15</span></h2>
+              <p class="voice-card-title-ar">فيديو ترويجي لأجواء كافيه — استعراض المشروبات والديكور بأسلوب يجذب الزوار</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>ريلز مطاعم وكافيهات</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>تصوير وإخراج عصري</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Caf%C3%A9%20Promo%20(%2315)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 16 -->
+          <article class="voice-card video-card" data-category="wedding" data-num="16" data-title="Wedding Videos" data-sub="مونتاج حفل زفاف سينمائي — تخليد أسعد اللحظات الرومانسية بنقاء وأناقة" data-file-id="1t1ZrUXTfM3RJUVHVzD9VunxFdRFN0PIL" data-drive="https://drive.google.com/drive/folders/1AzDiU_0t80lCjnUQLAYOClxhkVdH4D1s">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-16.jpg" alt="Wedding Videos #16" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#16</span>
+                <span class="voice-badge-tag tag-wedding">💍 مناسبات وأفراح</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Wedding Videos</span><span class="video-tag-inline">#16</span></h2>
+              <p class="voice-card-title-ar">مونتاج حفل زفاف سينمائي — تخليد أسعد اللحظات الرومانسية بنقاء وأناقة</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>مونتاج سينمائي رومانسي</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>تدرجات ألوان ناعمة</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Wedding%20Videos%20(%2316)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 17 -->
+          <article class="voice-card video-card" data-category="wedding" data-num="17" data-title="Wedding Videos" data-sub="هايلايت حفل زفاف وبهجة العرسان — لقطات حماسية ولحظات لا تُنسى" data-file-id="1cbts1sxTNuDM8V239ZZHFOG1eynHZAVV" data-drive="https://drive.google.com/drive/folders/1XDZr8EbX7lctw5HCYmz_3T4D3zCFK4u6">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-17.jpg" alt="Wedding Videos #17" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#17</span>
+                <span class="voice-badge-tag tag-wedding">💍 مناسبات وأفراح</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Wedding Videos</span><span class="video-tag-inline">#17</span></h2>
+              <p class="voice-card-title-ar">هايلايت حفل زفاف وبهجة العرسان — لقطات حماسية ولحظات لا تُنسى</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>هايلايت فرح وسعادة</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>إيقاع احتفالي سريع</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Wedding%20Videos%20(%2317)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 18 -->
+          <article class="voice-card video-card" data-category="intro" data-num="18" data-title="El Kabalia Intro" data-sub="مقدمة فيديو القبائلية — شارة بداية وهوية مرئية مميزة ومؤثرات صوتية" data-file-id="13_fAvmIkDQrz50lw_Ipo-RK8Z3IVbaKX" data-drive="https://drive.google.com/drive/folders/1zpJ3EX7xFDVjW99YrssySgxfQV_5qUFT">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-18.jpg" alt="El Kabalia Intro" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#18</span>
+                <span class="voice-badge-tag tag-intro">🎙️ مقدمات وإنترو</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>El Kabalia Intro</span><span class="video-tag-inline">#18</span></h2>
+              <p class="voice-card-title-ar">مقدمة فيديو القبائلية — شارة بداية وهوية مرئية مميزة ومؤثرات صوتية</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>شارة وهوية مرئية</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>ساوند ديزاين قوي</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20El%20Kabalia%20Intro%20(%2318)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 19 -->
+          <article class="voice-card video-card" data-category="intro" data-num="19" data-title="Podcast Intro" data-sub="مقدمة بودكاست احترافية — هوية بصرية أنيقة تعكس عمق الحوار والمحتوى" data-file-id="1ZqugEWTAIhAb-NWA4zlvCQYAxmN0ZPOl" data-drive="https://drive.google.com/drive/folders/1TqnKIZM1nak7kX5vFK8u3LXFyPjVz9x9">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-19.jpg" alt="Podcast Intro" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#19</span>
+                <span class="voice-badge-tag tag-intro">🎙️ مقدمات وإنترو</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Podcast Intro</span><span class="video-tag-inline">#19</span></h2>
+              <p class="voice-card-title-ar">مقدمة بودكاست احترافية — هوية بصرية أنيقة تعكس عمق الحوار والمحتوى</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>إنترو وهوية بودكاست</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>موشن جرافيكس راقي</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Podcast%20Intro%20(%2319)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 20 -->
+          <article class="voice-card video-card" data-category="music" data-num="20" data-title="Basma Band" data-sub="فرقة بصمة الموسيقية — ختام حماسي واستعراض أقوى اللحظات الفنية الحية" data-file-id="1KIpS7XsBrfdXnFxoYNMVpfWNSiQw3nOW" data-drive="https://drive.google.com/drive/folders/1R0thAxgFYOi_HSCukMlRCHZQB8HVScOU">
+            <div class="voice-card-banner video-card-banner" onclick="openVideoModal(this.closest('.voice-card'))">
+              <img class="voice-card-thumb" src="assets/images/video-covers/video-20.jpg" alt="Basma Band #20" loading="lazy">
+              <div class="voice-card-banner-top">
+                <span class="voice-card-num">#20</span>
+                <span class="voice-badge-tag tag-music">🎸 فرقة بصمة</span>
+              </div>
+              <div class="video-quality-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect></svg><span>Full HD</span></div>
+              <button class="voice-play-overlay-btn video-play-btn" title="تشغيل الفيديو مباشرة">
+                <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+            </div>
+            <div class="voice-card-body">
+              <h2 class="voice-card-title-en"><span>Basma Band</span><span class="video-tag-inline">#20</span></h2>
+              <p class="voice-card-title-ar">فرقة بصمة الموسيقية — ختام حماسي واستعراض أقوى اللحظات الفنية الحية</p>
+              <div class="voice-card-meta">
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>عروض غنائية حية</span>
+                <span class="voice-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>مونتاج ختامي حماسي</span>
+              </div>
+              <div class="voice-card-actions">
+                <button class="voice-action-preview video-action-play" onclick="openVideoModal(this.closest('.voice-card'))">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <span>مشاهدة الفيديو</span>
+                </button>
+                <a href="https://wa.me/201515409280?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D9%85%D8%B9%D8%AC%D8%A8%20%D8%A8%D8%B9%D9%85%D9%84%20Basma%20Band%20(%2320)%20%D9%81%D9%8A%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" title="تواصل عبر واتساب">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>تواصل معي بخصوص هذا العمل</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="portfolio-footer">
+    <p>© 2025 <span class="footer-name">Ahmed Mohamed (AME)</span> · جميع الحقوق محفوظة</p>
+  </footer>
+
+
+  <!-- Video Preview Modal (In-Page Direct Player) -->
+  <div class="voice-modal-backdrop" id="video-preview-modal" role="dialog" aria-modal="true" aria-hidden="true" onclick="handleBackdropClick(event)">
+    <div class="voice-modal-box" onclick="event.stopPropagation()">
+      <div class="voice-modal-header">
+        <div class="voice-modal-header-info">
+          <span class="voice-card-num" id="modal-item-num">#01</span>
+          <div>
+            <div class="voice-modal-title" id="modal-item-title">Vlogger Content</div>
+            <div class="voice-card-title-ar" id="modal-item-subtitle" style="margin-bottom:0; font-size:0.85rem; color:var(--text-secondary);">محتوى فلوجر</div>
+          </div>
+        </div>
+        <button class="voice-modal-close-btn" onclick="closeVideoModal()" aria-label="إغلاق النافذة" title="إغلاق (Esc)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="voice-modal-body">
+        <div class="voice-modal-frame-wrapper">
+          <div class="voice-modal-loader" id="video-modal-loader">
+            <div class="voice-loader-spinner"></div>
+            <span>جارٍ تجهيز مشغل الفيديو المباشر...</span>
+          </div>
+          <iframe
+            class="voice-modal-iframe"
+            id="video-modal-iframe"
+            src=""
+            title="مشغل الفيديو المباشر"
+            allow="autoplay; encrypted-media; fullscreen"
+            allowfullscreen
+            onload="document.getElementById('video-modal-loader').classList.add('is-hidden')">
+          </iframe>
+        </div>
+      </div>
+      <div class="voice-modal-footer">
+        <div class="voice-modal-footer-info">
+          <span class="voice-modal-hint-txt">مشاهدة مباشرة بدون مغادرة الموقع</span>
+        </div>
+        <div class="voice-modal-footer-actions">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="voice-action-whatsapp" id="modal-whatsapp-cta" title="تواصل عبر واتساب">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span>تواصل بخصوص هذا الفيديو</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="voice-toast" id="video-toast" role="alert" aria-live="polite">
+    <div class="voice-toast-inner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <span id="toast-text">تم نسخ الرابط بنجاح!</span>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    let toastTimeout = null;
+    let activeVideoUrl = '';
+
+    function filterVideoCards(category, clickedBtn) {
+      const buttons = document.querySelectorAll('.voice-filter-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('is-active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+
+      clickedBtn.classList.add('is-active');
+      clickedBtn.setAttribute('aria-selected', 'true');
+
+      const cards = document.querySelectorAll('#video-works-grid .voice-card');
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.classList.remove('is-hidden');
+        } else {
+          card.classList.add('is-hidden');
+        }
+      });
+    }
+
+    function openVideoModal(card) {
+      if (!card) return;
+
+      const fileId = card.getAttribute('data-file-id');
+      const title = card.getAttribute('data-title') || 'Video Work';
+      const subtitle = card.getAttribute('data-sub') || '';
+      const num = card.getAttribute('data-num') || '';
+      const driveUrl = card.getAttribute('data-drive') || '#';
+
+      const previewUrl = fileId ? ('https://drive.google.com/file/d/' + encodeURIComponent(fileId) + '/preview') : '';
+      const directViewUrl = fileId ? ('https://drive.google.com/file/d/' + encodeURIComponent(fileId) + '/view') : driveUrl;
+
+      activeVideoUrl = directViewUrl;
+
+      document.getElementById('modal-item-num').textContent = '#' + num;
+      document.getElementById('modal-item-title').textContent = title;
+      document.getElementById('modal-item-subtitle').textContent = subtitle;
+
+      const whatsappCta = document.getElementById('modal-whatsapp-cta');
+      if (whatsappCta) {
+        const messageText = 'مرحباً أحمد، معجب بعمل ' + title + ' (#' + num + ' - ' + subtitle + ') في مونتاج الفيديو وحابب أستفسر عن تفاصيل تنفيذ مشروع مشابه.';
+        whatsappCta.href = 'https://wa.me/201515409280?text=' + encodeURIComponent(messageText);
+      }
+
+      const loader = document.getElementById('video-modal-loader');
+      if (loader) {
+        loader.classList.remove('is-hidden');
+      }
+
+      const iframe = document.getElementById('video-modal-iframe');
+      if (previewUrl) {
+        iframe.src = previewUrl;
+      } else {
+        iframe.src = '';
+      }
+
+      const modal = document.getElementById('video-preview-modal');
+      modal.classList.add('is-active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('video-preview-modal');
+      modal.classList.remove('is-active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+
+      const iframe = document.getElementById('video-modal-iframe');
+      iframe.src = '';
+
+      const loader = document.getElementById('video-modal-loader');
+      if (loader) {
+        loader.classList.remove('is-hidden');
+      }
+    }
+
+    function handleBackdropClick(event) {
+      if (event.target && event.target.id === 'video-preview-modal') {
+        closeVideoModal();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeVideoModal();
+      }
+    });
+
+
+
+    function showToast(msg) {
+      const toast = document.getElementById('video-toast');
+      const toastText = document.getElementById('toast-text');
+      if (!toast || !toastText) return;
+
+      toastText.textContent = msg;
+      toast.classList.add('is-show');
+
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('is-show');
+      }, 2800);
+    }
+  </script>
+
+
+  <!-- Shared Controller Script -->
+  <script src="js/portfolio-shared.js"></script>
+</body>
+</html>
